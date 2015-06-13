@@ -1,0 +1,17 @@
+{
+    "contents" : "filestovector <- function(directory,id = 1:332)\n{\n    \n    ##libs\n    library(stringr)\n    \n    ## variables\n    collecteddata <- vector()\n    \n    if(length(directory) != 1){\n        return(\"error\")}\n    ## collect all files that are within the vector returned\n    for(i in 1:length(id)){\n        ## it is common for developers to assign interim steps in a process to \n        ## variables for troubleshooting purposes and readabilit, therefore what\n        ## could be done in one line is done in several\n        padded <- str_pad(string = id[i],3,side=\"left\",\"0\")\n        filename <- paste(directory,\"\\\\\",padded,\".csv\",sep=\"\")\n        \n        filedata <- read.csv(filename)\n        collecteddata <- c(collecteddata,filedata)\n        x\n    }\n    collecteddata\n}\n\npollutantmean <- function(directory, pollutant, id = 1:332) {\n    \n    \n    ## 'directory' is a character vector of length 1 indicating\n    ## the location of the CSV files\n    \n    ## 'pollutant' is a character vector of length 1 indicating\n    ## the name of the pollutant for which we will calculate the\n    ## mean; either \"sulfate\" or \"nitrate\".\n    \n    ## 'id' is an integer vector indicating the monitor ID numbers\n    ## to be used\n    \n    ## Return the mean of the pollutant across all monitors list\n    ## in the 'id' vector (ignoring NA values)\n    ## NOTE: Do not round the result!\n    ##print(collecteddata)\n   \n    collecteddata <-filestovector(directory,id)\n    completeddata <- complete.cases(collecteddata[pollutant])\n    mean(completeddata)\n   \n}\n\ncomplete <- function(directory,id=1:332){\n    c(id=1,nobs=2)\n    collecteddata <-filestovector(directory,id)\n}",
+    "created" : 1434164611489.000,
+    "dirty" : false,
+    "encoding" : "UTF-8",
+    "folds" : "",
+    "hash" : "561025876",
+    "id" : "C5EC29A4",
+    "lastKnownWriteTime" : 1434164333,
+    "path" : "D:/_coursera/datasciencecoursera/pollutantmean.R",
+    "project_path" : "pollutantmean.R",
+    "properties" : {
+    },
+    "relative_order" : 2,
+    "source_on_save" : false,
+    "type" : "r_source"
+}
